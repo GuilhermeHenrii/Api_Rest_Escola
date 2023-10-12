@@ -42,6 +42,6 @@ export default class Foto extends Model {// class Foto extendida de Model
 
   static associate(models) {
     // aqui podemos ver que o método estático associate, chama o this, que nesse caso, por ele ser um método estático, é a própria classe
-    this.belongsTo(models.Aluno, { foreignKey: 'aluno_id' });// this(classe fotos) pertencia a: models.Aluno através da chave estrangeira 'aluno_id'
+    this.belongsTo(models.Aluno, { foreignKey: 'aluno_id' });// this (classe fotos) pertencia a: models.Aluno através da chave estrangeira 'aluno_id'
   }
 }
