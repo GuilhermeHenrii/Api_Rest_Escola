@@ -29,7 +29,7 @@ class App { // Usando classes para criar o backend
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
-    this.app.use(express.static(resolve(__dirname, 'uploads')));// configurando o caminho dos arquivos estáticos da aplicação
+    this.app.use('/images/', express.static(resolve(__dirname, '..', 'uploads', 'images')));// configurando o caminho dos arquivos estáticos da aplicação
   }
 
   routes() {
