@@ -1,0 +1,11 @@
+// Dentro do arquivo de configuração do sequelize, iremos utilizar o commonJs para exportar e importar algo. Pois essas configs serão utilizadas pelo sequielize e sequelize cli.
+
+// Configurando os caminhos para os arquivos de configuração do sequelize
+const { resolve } = require('path');
+
+module.exports = {
+  config: resolve(__dirname, 'src', 'config', 'database.js'),
+  'models-path': resolve(__dirname, 'src', 'models'),
+  'migrations-path': resolve(__dirname, 'src', 'database', 'migrations'),
+  'seeders-path': resolve(__dirname, 'src', 'database', 'seeds'),
+}
