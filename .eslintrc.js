@@ -28,5 +28,6 @@ module.exports = {
     'import/first': 'off',
     'no-param-reassign': 'off',
     camelcase: 'off',
+    'object-shorthand': 'off',
   },
 };

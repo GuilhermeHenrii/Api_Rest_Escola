@@ -13,11 +13,29 @@ dotenv.config();
 import './database';
 
 import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
+
 import homeRoutes from './routes/homeRoutes';
 import userRoutes from './routes/userRoutes';
 import tokenRoutes from './routes/tokenRoutes';
 import alunosRoutes from './routes/alunosRoutes';
 import pictureRoutes from './routes/pictureRoutes';
+
+const whiteList = [
+  'http://react.34.95.131.0.com.br',
+  'http://localhost://5000',
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whiteList.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by cours'));
+    }
+  },
+};
 
 class App { // Usando classes para criar o backend
   constructor() {
@@ -27,6 +45,8 @@ class App { // Usando classes para criar o backend
   }
 
   middlewares() {
+    this.app.use(cors(corsOptions));
+    this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use('/images/', express.static(resolve(__dirname, '..', 'uploads', 'images')));// configurando o caminho dos arquivos estáticos da aplicação
