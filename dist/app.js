@@ -13,11 +13,29 @@ _dotenv2.default.config();
 require('./database');
 
 var _express = require('express'); var _express2 = _interopRequireDefault(_express);
+var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
+var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
+
 var _homeRoutes = require('./routes/homeRoutes'); var _homeRoutes2 = _interopRequireDefault(_homeRoutes);
 var _userRoutes = require('./routes/userRoutes'); var _userRoutes2 = _interopRequireDefault(_userRoutes);
 var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interopRequireDefault(_tokenRoutes);
 var _alunosRoutes = require('./routes/alunosRoutes'); var _alunosRoutes2 = _interopRequireDefault(_alunosRoutes);
 var _pictureRoutes = require('./routes/pictureRoutes'); var _pictureRoutes2 = _interopRequireDefault(_pictureRoutes);
+
+const whiteList = [
+  'http://react.34.95.131.0.com.br',
+  'http://localhost://5000',
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whiteList.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by cours'));
+    }
+  },
+};
 
 class App { // Usando classes para criar o backend
   constructor() {
@@ -27,6 +45,8 @@ class App { // Usando classes para criar o backend
   }
 
   middlewares() {
+    this.app.use(_cors2.default.call(void 0, corsOptions));
+    this.app.use(_helmet2.default.call(void 0, ));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
     this.app.use('/images/', _express2.default.static(_path.resolve.call(void 0, __dirname, '..', 'uploads', 'images')));// configurando o caminho dos arquivos estáticos da aplicação
