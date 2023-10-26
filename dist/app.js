@@ -13,8 +13,8 @@ _dotenv2.default.config();
 require('./database');
 
 var _express = require('express'); var _express2 = _interopRequireDefault(_express);
-var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
-var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
+var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet); // segurança da aplicação
+var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors); // para configurar politicas do cors
 
 var _homeRoutes = require('./routes/homeRoutes'); var _homeRoutes2 = _interopRequireDefault(_homeRoutes);
 var _userRoutes = require('./routes/userRoutes'); var _userRoutes2 = _interopRequireDefault(_userRoutes);
@@ -22,13 +22,14 @@ var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interop
 var _alunosRoutes = require('./routes/alunosRoutes'); var _alunosRoutes2 = _interopRequireDefault(_alunosRoutes);
 var _pictureRoutes = require('./routes/pictureRoutes'); var _pictureRoutes2 = _interopRequireDefault(_pictureRoutes);
 
-const whiteList = [
+const whiteList = [// definindo a "lista branca" de ips que poderao acessar a api
   'http://react.34.95.131.0.com.br',
-  'http://localhost://5000',
+  'http://localhost://4000',
+  'https://pt.wikipedia.org/',
 ];
 
 const corsOptions = {
-  origin: function (origin, callback) {
+  origin: function (origin, callback) { // origin é setado automaticamente pelo browser quando tentarmos acessar a api
     if (whiteList.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
@@ -45,7 +46,7 @@ class App { // Usando classes para criar o backend
   }
 
   middlewares() {
-    this.app.use(_cors2.default.call(void 0, corsOptions));
+    this.app.use(_cors2.default.call(void 0, corsOptions)); // setando permissao para as urls que irao acessar a api
     this.app.use(_helmet2.default.call(void 0, ));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());

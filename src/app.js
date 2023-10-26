@@ -13,8 +13,8 @@ dotenv.config();
 import './database';
 
 import express from 'express';
-import helmet from 'helmet';
-import cors from 'cors';
+import helmet from 'helmet'; // segurança da aplicação
+import cors from 'cors'; // para configurar politicas do cors
 
 import homeRoutes from './routes/homeRoutes';
 import userRoutes from './routes/userRoutes';
@@ -22,13 +22,14 @@ import tokenRoutes from './routes/tokenRoutes';
 import alunosRoutes from './routes/alunosRoutes';
 import pictureRoutes from './routes/pictureRoutes';
 
-const whiteList = [
+const whiteList = [// definindo a "lista branca" de ips que poderao acessar a api
   'http://react.34.95.131.0.com.br',
-  'http://localhost://5000',
+  'http://localhost://4000',
+  'https://pt.wikipedia.org/',
 ];
 
 const corsOptions = {
-  origin: function (origin, callback) {
+  origin: function (origin, callback) { // origin é setado automaticamente pelo browser quando tentarmos acessar a api
     if (whiteList.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
@@ -45,7 +46,7 @@ class App { // Usando classes para criar o backend
   }
 
   middlewares() {
-    this.app.use(cors(corsOptions));
+    this.app.use(cors(corsOptions)); // setando permissao para as urls que irao acessar a api
     this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
