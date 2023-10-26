@@ -22,7 +22,6 @@ var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interop
 var _alunosRoutes = require('./routes/alunosRoutes'); var _alunosRoutes2 = _interopRequireDefault(_alunosRoutes);
 var _pictureRoutes = require('./routes/pictureRoutes'); var _pictureRoutes2 = _interopRequireDefault(_pictureRoutes);
 
-// adicionando algum comentario para testar o commite
 const whiteList = [
   'http://react.34.95.131.0.com.br',
   'http://localhost://5000',
