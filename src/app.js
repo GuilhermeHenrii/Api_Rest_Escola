@@ -22,6 +22,7 @@ import tokenRoutes from './routes/tokenRoutes';
 import alunosRoutes from './routes/alunosRoutes';
 import pictureRoutes from './routes/pictureRoutes';
 
+// adicionando algum comentario para testar o commite
 const whiteList = [
   'http://react.34.95.131.0.com.br',
   'http://localhost://5000',
