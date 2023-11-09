@@ -22,19 +22,19 @@ import tokenRoutes from './routes/tokenRoutes';
 import alunosRoutes from './routes/alunosRoutes';
 import pictureRoutes from './routes/pictureRoutes';
 
-const whiteList = [// definindo a "lista branca" de ips que poderao acessar a api
-  'http://react.34.95.131.0.com.br',
-  'http://localhost:4000',
-  'http://localhost:3000',
-];
+// const whiteList = [// definindo a "lista branca" de ips que poderao acessar a api
+//   'http://react.34.95.131.0.com.br',
+//   'http://localhost:4000',
+//   'http://localhost:3000',
+// ];
 
 const corsOptions = {
   origin: function (origin, callback) { // origin é setado automaticamente pelo browser quando tentarmos acessar a api
-    if (whiteList.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by cours'));
-    }
+    // if (whiteList.indexOf(origin) !== -1 || !origin) {
+    callback(null, true);
+    // } else {
+    // callback(new Error('Not allowed by cours'));
+    // }
   },
 };
 
