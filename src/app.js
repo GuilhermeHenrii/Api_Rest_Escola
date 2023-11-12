@@ -28,15 +28,15 @@ import pictureRoutes from './routes/pictureRoutes';
 //   'http://localhost:3000',
 // ];
 
-const corsOptions = {
-  origin: function (origin, callback) { // origin é setado automaticamente pelo browser quando tentarmos acessar a api
-    // if (whiteList.indexOf(origin) !== -1 || !origin) {
-    callback(null, true);
-    // } else {
-    // callback(new Error('Not allowed by cours'));
-    // }
-  },
-};
+// const corsOptions = {
+// origin: function (origin, callback) { // origin é setado automaticamente pelo browser quando tentarmos acessar a api
+// if (whiteList.indexOf(origin) !== -1 || !origin) {
+// callback(null, true);
+// } else {
+// callback(new Error('Not allowed by cours'));
+// }
+// },
+// };
 
 class App { // Usando classes para criar o backend
   constructor() {
@@ -46,7 +46,7 @@ class App { // Usando classes para criar o backend
   }
 
   middlewares() {
-    this.app.use(cors(corsOptions)); // setando permissao para as urls que irao acessar a api
+    this.app.use(cors()); // setando permissao para as urls que irao acessar a api (permissão total)
     this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
