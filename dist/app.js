@@ -22,20 +22,21 @@ var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interop
 var _alunosRoutes = require('./routes/alunosRoutes'); var _alunosRoutes2 = _interopRequireDefault(_alunosRoutes);
 var _pictureRoutes = require('./routes/pictureRoutes'); var _pictureRoutes2 = _interopRequireDefault(_pictureRoutes);
 
-const whiteList = [// definindo a "lista branca" de ips que poderao acessar a api
-  'http://react.34.95.131.0.com.br',
-  'http://localhost://4000',
-];
+// const whiteList = [// definindo a "lista branca" de ips que poderao acessar a api
+//   'http://react.34.95.131.0.com.br',
+//   'http://localhost:4000',
+//   'http://localhost:3000',
+// ];
 
-const corsOptions = {
-  origin: function (origin, callback) { // origin é setado automaticamente pelo browser quando tentarmos acessar a api
-    if (whiteList.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by cours'));
-    }
-  },
-};
+// const corsOptions = {
+// origin: function (origin, callback) { // origin é setado automaticamente pelo browser quando tentarmos acessar a api
+// if (whiteList.indexOf(origin) !== -1 || !origin) {
+// callback(null, true);
+// } else {
+// callback(new Error('Not allowed by cours'));
+// }
+// },
+// };
 
 class App { // Usando classes para criar o backend
   constructor() {
@@ -45,7 +46,7 @@ class App { // Usando classes para criar o backend
   }
 
   middlewares() {
-    this.app.use(_cors2.default.call(void 0, corsOptions)); // setando permissao para as urls que irao acessar a api
+    this.app.use(_cors2.default.call(void 0, )); // setando permissao para as urls que irao acessar a api (permissão total)
     this.app.use(_helmet2.default.call(void 0, ));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
