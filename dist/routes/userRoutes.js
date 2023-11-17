@@ -4,7 +4,7 @@ var _loginRequired = require('../middlewares/loginRequired'); var _loginRequired
 
 const router = new (0, _express.Router)();
 
-router.post('/', _loginRequired2.default, _UserController2.default.store); // Note que não inserimos a rota referente ao users aqui, pois já fizemos isso no app.js
+router.post('/', /* loginRequired, */ _UserController2.default.store); // Note que não inserimos a rota referente ao users aqui, pois já fizemos isso no app.js
 
 // Em um sistema real, essas rotas não deveriam existir
 // router.get('/', loginRequired, userController.index); // lista usuarios

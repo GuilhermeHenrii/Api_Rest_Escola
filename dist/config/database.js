@@ -14,8 +14,8 @@ module.exports = {
     timestamps: true,
     underscored: true,
     underscoredAll: true,
-    createdAt: 'created_at',
-    updatedAt: 'updated_at',
+    createdAt: 'created_at', // "forçando" o campo createdAt a ser convertido para created_at
+    updatedAt: 'updated_at', // "forçando" o campo updatedAt a ser convertido para updated_at
   },
   dialectOptions: {
     timezone: 'America/Sao_Paulo',
