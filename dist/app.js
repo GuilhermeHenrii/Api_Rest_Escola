@@ -47,6 +47,7 @@ class App { // Usando classes para criar o backend
     this.app.use(_cors2.default.call(void 0, )); // setando permissao para as urls que irao acessar a api (permissão total)
     this.app.use(_helmet2.default.call(void 0, {
       crossOriginEmbedderPolicy: false,
+      crossOriginResourcePolicy: 'cross-origin',
     }));
     this.app.use(_express2.default.urlencoded({ extended: true }));
     this.app.use(_express2.default.json());
