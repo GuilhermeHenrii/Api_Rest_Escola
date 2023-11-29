@@ -46,6 +46,7 @@ class App { // Usando classes para criar o backend
   middlewares() {
     this.app.use(cors(corsOptions())); // setando permissao para as urls que irao acessar a api (permissão total)
     this.app.use(helmet({
+      crossOriginEmbedderPolicy: false,
       crossOriginResourcePolicy: 'cross-origin',
     }));
     this.app.use(express.urlencoded({ extended: true }));
