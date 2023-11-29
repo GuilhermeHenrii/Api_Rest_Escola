@@ -38,17 +38,14 @@ const corsOptions = {
 
 class App { // Usando classes para criar o backend
   constructor() {
-    this.app = express(corsOptions());
+    this.app = express();
     this.middlewares();
     this.routes();
   }
 
   middlewares() {
-    this.app.use(cors()); // setando permissao para as urls que irao acessar a api (permissão total)
-    this.app.use(helmet({
-      crossOriginEmbedderPolicy: false,
-      crossOriginResourcePolicy: false,
-    }));
+    this.app.use(cors(corsOptions())); // setando permissao para as urls que irao acessar a api (permissão total)
+    this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use('/images/', express.static(resolve(__dirname, '..', 'uploads', 'images')));// configurando o caminho dos arquivos estáticos da aplicação
