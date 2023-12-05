@@ -15,6 +15,7 @@ import './database';
 import express from 'express';
 // import helmet from 'helmet'; // segurança da aplicação
 import cors from 'cors'; // para configurar politicas do cors
+import delay from 'express-delay';
 
 import homeRoutes from './routes/homeRoutes';
 import userRoutes from './routes/userRoutes';
@@ -46,6 +47,7 @@ class App { // Usando classes para criar o backend
   middlewares() {
     this.app.use(cors()); // setando permissao para as urls que irao acessar a api (permissão total)
     // this.app.use(helmet());
+    this.app.use(delay(1500));
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use('/images/', express.static(resolve(__dirname, '..', 'uploads', 'images')));// configurando o caminho dos arquivos estáticos da aplicação
