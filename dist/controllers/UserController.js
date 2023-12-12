@@ -66,8 +66,9 @@ class UserController {
       }
 
       const deleteUser = await user.destroy();
+      // eslint-disable-next-line
       const { nome } = deleteUser;
-      return res.json(`Usuário ${nome} deletado com sucesso`);// retornando que o usuario em quetão foi deletado
+      return res.json({ usuarioDeletado: true });// retornando que o usuario em quetão foi deletado
     } catch (e) {
       return res.status(400).jason({
         errors: e.errors.map((err) => err.message),
