@@ -5,7 +5,7 @@
 
 https://api.devgui.tech/
 
-Essa Api Rest foi constuída com o intuíto de simular uma gerência de alunos em uma escola. Nela temos rotas para um crud de usuários, com nome, email e senha. Implementei o JWT para a criação de um token para o usuário logado.
+Essa Api Rest foi construída com o intuíto de simular uma gerência de alunos em uma escola. Nela temos rotas para um crud de usuários, com nome, email e senha. Implementei o JWT para a criação de um token para o usuário logado.
 
 Nas rotas do cadastro dos alunos, também teremos um crud no qual eu recebo campos como nome, sobrenome, email, idade, peso e altura.
 
